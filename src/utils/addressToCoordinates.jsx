@@ -11,8 +11,12 @@
  * @property {string} id - Identifiant unique pour la base de données
  */
 
+import axios from 'axios';
+
+const BASE_URL = "https://site--portfolio-lovelyplace-backend--dqd24mcv82s5.code.run";
+
 /**
- * Convertit une adresse en coordonnées géographiques via l'API Google Maps Geocoding
+ * Convertit une adresse en coordonnées géographiques via l'API du serveur
  *
  * @async
  * @function addressToCoordinates
@@ -31,43 +35,18 @@ export const addressToCoordinates = async (
   photo,
   id
 ) => {
-  // Configuration de l'API Google Maps
-  const apiKey = "AIzaSyDGTAFKoRVbBsH6XN_FEXAoLcIksZd9jCU";
-
-  // Construction de l'URL de l'API avec l'adresse encodée
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-    address
-  )}&key=${apiKey}`;
-
   try {
-    // Appel à l'API de géocodage
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await axios.post(`${BASE_URL}/geocode`, {
+      address,
+      key,
+      locationDescription,
+      photo,
+      id
+    });
 
-    // Vérification de la réponse
-    if (data.status === "OK") {
-      // Extraction des coordonnées de la réponse
-      const location = data.results[0].geometry.location;
-
-      // Construction de l'objet de retour avec toutes les informations du lieu
-      return {
-        key: key,
-        location: {
-          lat: location.lat,
-          lng: location.lng,
-        },
-        title: key,
-        description: locationDescription,
-        image: photo,
-        id: id,
-      };
-    } else {
-      // Gestion des erreurs de l'API
-      throw new Error(`Erreur lors de la géolocalisation : ${data.status}`);
-    }
+    return response.data;
   } catch (error) {
-    // Gestion des erreurs de requête
-    console.error("Erreur :", error.message);
+    console.error('Erreur lors de la géolocalisation :', error.message);
     return null;
   }
 };

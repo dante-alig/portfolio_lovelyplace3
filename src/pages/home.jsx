@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import Items from "../components/Items";
 import ItemsFilters from "../components/ItemsFilters";
 import { MyContext } from "../context/myContext";
@@ -44,8 +44,8 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false); // État d'affichage de la modal de filtres
 
   // Références pour la gestion des clics extérieurs et du défilement
-  const modalRef = useState(null);
-  const filtersRef = useState(null);
+  const modalRef = useRef(null);
+  const filtersRef = useRef(null);
 
   /**
    * Effet pour charger les données des lieux

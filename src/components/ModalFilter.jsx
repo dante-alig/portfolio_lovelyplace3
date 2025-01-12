@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { MyContext } from "../context/myContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
 
 const ModalFilter = ({ modalRef, setShowModal }) => {
   const {
@@ -52,7 +53,7 @@ const ModalFilter = ({ modalRef, setShowModal }) => {
         <div className="modal-adress">
           <div>
             <p>Trouver des lieux ou des activités proche d'une adresse</p>
-            <FontAwesomeIcon icon="fa-solid fa-location-crosshairs" />
+            <FontAwesomeIcon icon={faLocationCrosshairs} />
           </div>
 
           <input
@@ -128,7 +129,7 @@ const ModalFilter = ({ modalRef, setShowModal }) => {
               setFilterParams(null);
             }}
           >
-            <p>Tout effacer</p>
+            {/* <p>Tout effacer</p> */}
           </div>
           <button className="button-filter" onClick={handleApplyFilters}>
             Appliquer
