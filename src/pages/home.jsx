@@ -119,8 +119,8 @@ const Home = () => {
     <div className="home-container">
       <div className="mobile-notice">
         <p>
-          Ce site n'est pas encore adapté à ce format nous vous conseillons de
-          le lancer depuis un ordinateur
+          La version mobile n'est pas encore disponible. Veuillez utiliser un
+          ordinateur pour profiter pleinement de cette application.
         </p>
       </div>
       {/* Barre de catégories principales */}
