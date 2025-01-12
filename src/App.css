@@ -606,7 +606,6 @@ a:visited {
 }
 
 .button-box div {
-  width: 150px;
   height: 47px;
   display: flex;
   justify-content: center;
@@ -616,12 +615,11 @@ a:visited {
 .button-box button {
   all: unset;
   text-align: center;
-  width: 350px;
+  width: 500px;
   height: 47px;
   background-color: #dcbb76;
   color: white;
   border-radius: 5px;
-  margin-top: 0px;
 }
 
 /* .modal-filter-content button:last-child {
